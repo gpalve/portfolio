@@ -14,27 +14,43 @@
     .badge {
       @apply text-xs font-semibold px-3 py-1 rounded-full mb-2 mr-2 inline-block;
     }
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Animation for project cards */
+    .project-card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 
 <body class="bg-gradient-to-b from-black via-gray-900 to-gray-950 text-white">
 
-  <main class="flex flex-col md:flex-row h-screen overflow-hidden">
+  <main class="flex flex-col md:flex-row min-h-screen">
 
-    <!-- Left Column (40%) -->
-    <aside class="w-full md:w-2/5 bg-gradient-to-b from-black via-gray-900 to-gray-800 p-6 flex flex-col justify-between overflow-auto">
+    <!-- Left Column (40%, Fixed) -->
+    <aside class="w-full md:w-2/5 bg-gradient-to-b from-black via-gray-900 to-gray-800 p-6 sm:p-8 flex flex-col justify-between md:sticky md:top-0 md:h-screen md:overflow-hidden">
       <div>
-        <img src="images/profile.jpg" alt="Ganesh Palve" class="w-32 h-32 rounded-full mx-auto border-4 border-white shadow-lg">
-        <h1 class="text-3xl font-bold mt-6 text-center text-white">Ganesh Palve</h1>
-        <p class="text-md mt-2 text-center text-gray-200">Full Stack Developer | Solution Architect</p>
-        <p class="text-sm text-center text-gray-300">Founder of SignalApp | CTO at Cybernous</p>
+        <img src="images/profile.jpg" alt="Ganesh Palve" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto border-4 border-white shadow-lg">
+        <h1 class="text-2xl sm:text-3xl font-bold mt-6 text-center text-white">Ganesh Palve</h1>
+        <p class="text-sm sm:text-md mt-2 text-center text-gray-200">Full Stack Developer | Solution Architect</p>
+        <p class="text-xs sm:text-sm text-center text-gray-300">Founder of SignalApp | CTO at Cybernous</p>
 
         <div class="mt-6">
-          <h2 class="text-2xl font-semibold text-white border-b border-white pb-2 mb-4">About Me</h2>
-          <p class="text-gray-200 text-lg leading-relaxed">
+          <h2 class="text-xl sm:text-2xl font-semibold text-white border-b border-white pb-2 mb-4">About Me</h2>
+          <p class="text-gray-200 text-sm sm:text-lg leading-relaxed">
             B.Tech IT with 10+ years of software experience in the Indian Railways & tech startups. Leader of successful public and private sector applications. Passionate about team building, innovation, and user-centric solutions.
           </p>
-          <ul class="list-disc list-inside text-gray-300 mt-4 text-base">
+          <ul class="list-disc list-inside text-gray-300 mt-4 text-sm sm:text-base">
             <li>Sr. Executive @ CRIS – 2 Years</li>
             <li>Junior Engineer @ Western Railways – 4 Years</li>
             <li>Senior Engineer @ Western Railways – 4 Years</li>
@@ -43,7 +59,7 @@
         </div>
 
         <div class="mt-6">
-          <h2 class="text-2xl font-semibold text-white border-b border-white pb-2 mb-4">Tech Stack</h2>
+          <h2 class="text-xl sm:text-2xl font-semibold text-white border-b border-white pb-2 mb-4">Tech Stack</h2>
           <div class="flex flex-wrap gap-2">
             <span class="badge bg-blue-600">Flutter</span>
             <span class="badge bg-yellow-400 text-black">Firebase</span>
@@ -58,8 +74,8 @@
         </div>
 
         <div class="mt-6">
-          <h2 class="text-2xl font-semibold text-white border-b border-white pb-2 mb-4">Contact</h2>
-          <ul class="text-base text-gray-200 space-y-2">
+          <h2 class="text-xl sm:text-2xl font-semibold text-white border-b border-white pb-2 mb-4">Contact</h2>
+          <ul class="text-sm sm:text-base text-gray-200 space-y-2">
             <li>Email: <a href="mailto:gpalve@gmail.com" class="text-white underline">gpalve@gmail.com</a></li>
             <li>Email: <a href="mailto:palve.ganesh@cris.org.in" class="text-white underline">palve.ganesh@cris.org.in</a></li>
             <li>GitHub: <a href="https://github.com/gpalve" target="_blank" class="text-white underline">gpalve</a></li>
@@ -70,75 +86,98 @@
       </div>
 
       <footer class="text-center text-xs text-gray-400 mt-6">
-        &copy; 2025 Ganesh Palve. Built with ❤️ using Tailwind CSS.
+        © 2025 Ganesh Palve. Built with ❤️ using Tailwind CSS.
       </footer>
     </aside>
 
-    <!-- Right Column (60%) -->
-    <section class="w-full md:w-3/5 overflow-y-auto bg-gray-900 p-6">
-      <h2 class="text-3xl font-bold text-gray-100 mb-8 text-center">Recent Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-            <!-- SignalApp (Portrait) -->
-    <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border border-grey-800 group">
-      <div class="overflow-hidden rounded-xl mb-4 h-72">
-        <img src="images/signalapp.png" alt="SignalApp" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-      </div>
-      <h4 class="text-xl font-semibold text-purple-300">SignalApp for Railways</h4>
-      <p class="text-sm text-gray-400 mt-2">30K+ Downloads • 4.5★</p>
-      <p class="text-gray-300 mt-4">Native Android app for Railway Employees with technical content. Commercial success.</p>
-    </div>
+    <!-- Right Column (60%, Scrollable) -->
+    <section class="w-full md:w-3/5 bg-gray-900 p-6 sm:p-8 md:overflow-y-auto md:h-screen">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-100 mb-8 text-center">Recent Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- SignalApp -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/signalapp.png" alt="SignalApp" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="https://play.google.com/store/apps/details?id=com.gpalve.myapplication&hl=en_IN" target="_blank" class="hover:underline">SignalApp for Railways</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">30K+ Downloads • 4.5★</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Native Android app for Railway Employees with technical content. Commercial success.</p>
+        </div>
 
-    <!-- Cybernous (Landscape) -->
-    <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border border-grey-800 group">
-      <div class="overflow-hidden rounded-xl mb-4 aspect-[16/9]">
-        <img src="images/cybernous.png" alt="Cybernous LMS" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-      </div>
-      <h4 class="text-xl font-semibold text-purple-300">Cybernous LMS</h4>
-      <p class="text-sm text-gray-400 mt-2">CTO Role • Video Streaming</p>
-      <p class="text-gray-300 mt-4">Flutter + Firebase-powered LMS for cybersecurity training with scalable architecture.</p>
-    </div>
+        <!-- SwaRail -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card" style="animation-delay: 0.1s;">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/swarail.png" alt="SwaRail" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="https://play.google.com/store/search?q=swarail&c=apps&hl=en_IN" target="_blank" class="hover:underline">SwaRail: Superapp for Indian Railways</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">Flutter • RestAPIs</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Made significant contributions in Online Food Delivery module, Accessibility and Talkback Module, and app optimization.</p>
+        </div>
 
-    <!-- Content Automation (Portrait) -->
-    <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border border-grey-800 group">
-      <div class="overflow-hidden rounded-xl mb-4 h-80">
-        <img src="images/content-automation.png" alt="Content Automation" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-      </div>
-      <h4 class="text-xl font-semibold text-purple-300">Content Automation</h4>
-      <p class="text-sm text-gray-400 mt-2">Stock Market & Railway AI Posting</p>
-      <p class="text-gray-300 mt-4">Python automation for 3k+ media posts across platforms like X, Telegram, and YouTube.</p>
-    </div>
+        <!-- Divisional Railway Portal -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card" style="animation-delay: 0.2s;">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/wr-website.png" alt="Divisional Railway Portal" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="https://bctonline.mpes.co.in" target="_blank" class="hover:underline">Divisional Railway Portal</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">Laravel • 10K+ Notes</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Award-winning management portal for inspections, audits, and ticketing within Western Railways.</p>
+        </div>
 
-    <!-- IR Dashboard (Landscape) -->
-    <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border border-grey-800 group">
-      <div class="overflow-hidden rounded-xl mb-4 aspect-[16/9]">
-        <img src="images/ir-dashboard.png" alt="IR Dashboard" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-      </div>
-      <h4 class="text-xl font-semibold text-purple-300">IR Analytics Dashboard</h4>
-      <p class="text-sm text-gray-400 mt-2">PowerBI • 50M+ Records</p>
-      <p class="text-gray-300 mt-4">Complex dashboard for Indian Railways using PowerBI and Python. 10+ modules integrated.</p>
-    </div>
+        <!-- IR Analytics -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card" style="animation-delay: 0.3s;">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/ir-dashboard.png" alt="IR Dashboard" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="https://irnalytics.in" target="_blank" class="hover:underline">IR Analytics Dashboard</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">PowerBI • 50M+ Records</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Complex dashboard for Indian Railways using PowerBI and Python. 10+ modules integrated.</p>
+        </div>
 
-    <!-- WR Website (Portrait) -->
-    <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border border-grey-800 group">
-      <div class="overflow-hidden rounded-xl mb-4 h-72">
-        <img src="images/wr-website.png" alt="WR Website" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-      </div>
-      <h4 class="text-xl font-semibold text-purple-300">WR Management Website</h4>
-      <p class="text-sm text-gray-400 mt-2">Laravel • 10K+ Notes</p>
-      <p class="text-gray-300 mt-4">Award-winning management portal for inspections, audits and ticketing within Western Railways.</p>
-    </div>
+        <!-- Cybernous -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card" style="animation-delay: 0.4s;">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/cybernous.png" alt="Cybernous LMS" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="https://lms.cybernous.com" target="_blank" class="hover:underline">Cybernous LMS</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">CTO Role • Video Streaming</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Flutter + Firebase-powered LMS for cybersecurity training with scalable architecture.</p>
+        </div>
 
-    <!-- Hospital App (Landscape) -->
-    <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border border-grey-800 group">
-      <div class="overflow-hidden rounded-xl mb-4 aspect-[16/9]">
-        <img src="images/hospital-app.png" alt="Hospital App" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-      </div>
-      <h4 class="text-xl font-semibold text-purple-300">Divisional Hospital App</h4>
-      <p class="text-sm text-gray-400 mt-2">Covid-Time Success • 60K+ Appointments</p>
-      <p class="text-gray-300 mt-4">Laravel + Vue app that handled public health scheduling during the pandemic. Awarded by GM.</p>
-    </div>
-       
+        <!-- Content Automation -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card" style="animation-delay: 0.5s;">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/content-automation.png" alt="Content Automation" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="https://x.com/optimistic_otl" target="_blank" class="hover:underline">Content Automation</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">Stock Market & Railway AI Posting</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Python automation for 3k+ media posts across platforms like X, Telegram, and YouTube.</p>
+        </div>
+
+        <!-- Divisional Railway Hospital App -->
+        <div class="bg-gray-900 rounded-2xl shadow-lg p-6 border-2 border-gray-600 project-card" style="animation-delay: 0.6s;">
+          <div class="overflow-hidden rounded-xl mb-4 h-64 sm:h-72">
+            <img src="images/hospital-app.png" alt="Divisional Railway Hospital App" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h4 class="text-lg sm:text-xl font-semibold text-purple-300">
+            <a href="#" onclick="alert('Link not provided for Divisional Railway Hospital App'); return false;" class="hover:underline">Divisional Railway Hospital App</a>
+          </h4>
+          <p class="text-xs sm:text-sm text-gray-400 mt-2">Covid-Time Success • 60K+ Appointments</p>
+          <p class="text-gray-300 mt-4 text-sm sm:text-base">Laravel + Vue app that handled public health scheduling during the pandemic. Awarded by GM.</p>
+        </div>
+
       </div>
     </section>
 
